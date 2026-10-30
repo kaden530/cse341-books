@@ -1,7 +1,6 @@
 import app from './app.js';
 import { connectToDb } from './src/db/connect.js';
 
-
 const PORT = process.env.PORT;
 
 if (!PORT) {
@@ -10,7 +9,6 @@ if (!PORT) {
 async function startServer(){
 try {
     await connectToDb();
-
     app.listen(PORT, () => {
       console.log(`Server listening on port ${PORT}`);
     });
