@@ -1,4 +1,6 @@
 import { getAllBooks, getBooksById } from "../models/books.js";
+import {booksListTemplate} from "../js/templates.js";
+
 
 const getBooksHandler = async(req, res) => {
     try{
@@ -11,7 +13,7 @@ const getBooksHandler = async(req, res) => {
 };
 export{getBooksHandler};
 
-const getBookByIdHandler =async(req,res) =>{
+const getBookByIdHandler = async(req,res) =>{
      const requestedId = req.params.id;
     try{
         const book = await getBooksById(requestedId);
@@ -25,3 +27,18 @@ const getBookByIdHandler =async(req,res) =>{
     }
 };
 export{getBookByIdHandler};
+
+ const createViews = async (req, res) => {
+  try {
+    const books = await getAllBooks();
+          console.log(Array.isArray(books), "book view")
+    // Generate HTML string
+    const htmlOutput = booksListTemplate(books);
+    // Express automatically sets content-type to text/html when sending strings
+    return res.send(htmlOutput); 
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send('Database error');
+  }
+};
+export{createViews}
