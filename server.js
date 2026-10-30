@@ -11,6 +11,7 @@ try {
     await connectToDb();
     app.listen(PORT, () => {
       console.log(`Server listening on port ${PORT}`);
+       console.log(`Server is running! View it here: http://localhost:${PORT}`);
     });
   } catch (error) {
     console.error('Database connection failed:', error.message);
