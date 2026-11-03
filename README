@@ -1,0 +1,127 @@
+Step process for coding each assignment should include:
+# Spec name
+
+## Purpose
+This is the description of the end goal of the assignment
+
+## Data Model
+MongoDB database: 
+MongoDB collection: 
+
+list all the keys and values of the objects
+collection object:
+(key: value )
+- id: string (required)
+- author: string (required)
+- title: string (required)
+- publicationDate: string in ISO 8601 date format (for example, "2021-08-17") (required)
+
+## Endpoints
+1. GET /collection name
+- Description: purpose of the GET
+- Success status: 200
+- Error status: 500
+- Success response body example:
+[
+  {
+    "id": "b1",
+    "author": "Maya Rivera",
+    "title": "Patterns of Light",
+    "publicationDate": "2021-08-17"
+  }
+]
+
+2. GET /collection name/:key
+- Description: Return one object by id.
+- Success status: 200
+- Not found status: 404
+- Error status: 500
+- Success response body example:
+{
+  "id": "b1",
+  "author": "Maya Rivera",
+  "title": "Patterns of Light",
+  "publicationDate": "2021-08-17"
+}
+- Not found response body example:
+{
+  "message": "object not found"
+}
+
+## Error Handling
+- Do not return stack traces to clients.
+- Return a simple message for 500 errors:
+{
+  "message": "Internal server error"
+}
+
+## Implementation Notes
+- Use a MongoDB collection named `mongo collection name`.
+- Seed the collection with the `mongodb collection name` documents needed for testing.
+- Use environment variables for the MongoDB connection.
+
+## Out of Scope for Week 1
+- POST, PUT, DELETE routes
+- Authentication and authorization
+
+
+
+## Step 1 Determine the tasks
+The first step is to break the spec into a short ordered list of coding tasks.
+
+First, review the order of the tasks. Next, review the size of the tasks. Each task should be small enough to complete in one work session.
+
+## Step 2 Confirm task order and size
+The next step is to review your task plan to see if the order is clear, practical, and covers everything in the spec.
+
+First, review the order of the tasks. Next, review the size of the tasks. Each task should be small enough to complete in one work session.
+
+## Step 3 Create the issues
+Now that you have a good plan, you can create detailed GitHub issues for each task in your plan.
+
+Create one issue per task. This will keep each issue focused on a single deliverable and include enough detail that another person (or an AI agent) could implement and test it. For every issue, include a title, a task description, and a Test Plan that identifies the exact checks needed to close the issue.
+
+Copy and paste any relevant information from the spec into each issue.
+`Example`
+Issue 1: Create the books collection and connect the app to MongoDB
+Create the following issue at GitHub. In your repository, open the Issues tab, choose New issue, copy the title exactly, and paste the full description and Test Plan into the issue body. By using the checklist style language from the Test Plan, you will have clear acceptance criteria to verify that the work is complete.
+
+Title: Create the books collection and connect the app to MongoDB
+
+Description:
+- Use MongoDB database `cse341-books-db`.
+- Create a MongoDB collection named `books`.
+- Insert at least 3 seed book documents with fields `id`, `author`, `title`, and `publicationDate`.
+- Each book document should follow this data model:
+  - `id`: string, required
+  - `author`: string, required
+  - `title`: string, required
+  - `publicationDate`: string in ISO 8601 date format, required
+- Example book document:
+{
+  "id": "b1",
+  "author": "Maya Rivera",
+  "title": "Patterns of Light",
+  "publicationDate": "2021-08-17"
+}
+- Install the official MongoDB Node.js driver if needed.
+- Configure the app to connect to MongoDB using environment variables.
+- Update the server startup so the app connects to the database before it begins listening for requests to ensure that the connection is working.
+
+Test Plan:
+- The `cse341-books-db` database exists.
+- The `books` collection exists with at least 3 documents.
+- Each book document includes `id`, `author`, `title`, and `publicationDate`.
+- Local app can connect to MongoDB without connection errors.
+- Connection values are stored using environment variables (no secrets committed).
+
+
+## Step 4 Evaluate your GitHub Issues
+
+- Is every issue clear, testable, small, and complete?
+- Does the Test Plan for each issue include specific checks that can be used to verify when the task is truly finished?
+- Do you feel like you could easily give these issues to a teammate or an AI agent to complete?
+- If the answer to these questions is "yes" then you are ready to move forward. If the answer to any of them is "no" then you should update the issues before moving on.
+
+`GitHub issues are required`
+In order for your assignment to be marked complete, you must create these issues at GitHub and then later close them with a matching pull request.
