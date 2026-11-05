@@ -34,3 +34,40 @@ return`
 }
 
 export{booksListTemplate};
+
+function authorsListTemplate(authors) {
+        console.log("check 2")
+return`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Author List</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; background: rgba(83, 83, 83, 0.25);; }
+    div#app{background: white; margins:auto; justify-content:space-around; min-width:90%; display: flex; flex-wrap: wrap; justify-self:center;}
+    .author-card {border: solid black 3px; min-width:30%; max-width: 50%; background: white; padding: 15px; margin: 10px 0; border-radius: 6px; box-shadow: 0 4px 6px rgba(6, 6, 6, 0.54); }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    ${authors.length === 0
+      ? '<p>No authors available.</p>' 
+      : authors.map(author => {return `
+          <div class="author-card">
+            <h3>${author.name || 'Unknown'}</h3>
+            <p>Birth Year: ${author.birthYear || 'Unknown'}</p>
+            <p>Bio: ${author.bio || 'No bio available'}</p>
+          </div>
+        `}).join('')
+    }
+  </div>
+
+</body>
+</html>
+  `;
+}
+
+export{authorsListTemplate};

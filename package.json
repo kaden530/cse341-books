@@ -14,6 +14,7 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
+    "restart": "powershell -Command \"Stop-Process -Id (Get-NetTCPConnection -LocalPort 3000).OwningProcess -Force\"",
     "start": "node --env-file=.env server.js",
     "dev": "nodemon --env-file=.env server.js",
     "lint": "eslint .",
