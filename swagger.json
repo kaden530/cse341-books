@@ -47,19 +47,24 @@
                 ],
                 "properties": {
                   "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "b1"
                   },
                   "authorId": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "a1"
                   },
                   "author": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "John Doe"
                   },
                   "title": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "The Great Adventure"
                   },
                   "publicationDate": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2023-01-15"
                   }
                 }
               }
@@ -68,8 +73,13 @@
         },
         "responses": {
           "201": {
-            "description": "The newly created book object",
-            "content": null
+            "description": "The newly created book object"
+          },
+          "400": {
+            "description": "Required field missing or id already exists or Invalid authorId provided"
+          },
+          "500": {
+            "description": "unable to create book."
           }
         }
       }
@@ -151,16 +161,20 @@
                 ],
                 "properties": {
                   "authorId": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "a1"
                   },
                   "author": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "John Doe"
                   },
                   "title": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "The Great Adventure"
                   },
                   "publicationDate": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2023-01-15"
                   }
                 }
               }
