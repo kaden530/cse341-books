@@ -86,6 +86,13 @@ const createBookHandler = async (req, res) => {
             return res.status(400).json({ message: "The id already exists" });
         }
 
+       const bookswithoutAuthor = await bookHasAuthor(authorId);
+        if (!bookswithoutAuthor) {
+            return res.status(400).json({ 
+                message: "You cannot create the book because you have selected an invalid author" 
+            });
+        }
+
         const newBook = { _id: id, authorId, author, title, publicationDate };
         
         // 3. Save to MongoDB

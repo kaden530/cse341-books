@@ -31,7 +31,7 @@ const router = express.Router()
  *       500:
  *         description: Server error
  */
-router.get('/books',getBooksHandler);
+router.get('/books', getBooksHandler);
 
 /**
  * @openapi
@@ -57,7 +57,7 @@ router.get('/books',getBooksHandler);
  *                 id:
  *                   type: string
  *                 title:
- *                   type: string
+ *                   type: string                  
  *                 author:
  *                   type: string
  *       404:
@@ -94,12 +94,16 @@ router.get('/books/:id', getBookByIdHandler);
  *             properties:
  *               authorId:
  *                 type: string
+ *                 example: a1
  *               author:
  *                 type: string
+ *                 example: John Doe
  *               title:
  *                 type: string
+ *                 example: The Great Adventure
  *               publicationDate:
  *                 type: string
+ *                 example: "2023-01-15"
  *     responses:
  *       200:
  *         description: The updated book object
@@ -116,18 +120,19 @@ router.get('/books/:id', getBookByIdHandler);
  *                   type: string
  *                 title:
  *                   type: string
-*                 publicationDate:
-*                   type: string
-*       400:
-*         description: Required field missing or invalid data provided
-*       404:
-*         description: Book not found
-*       500:
-*         description: Server error
-*/
+ *                 publicationDate:
+ *                   type: string
+ *       400:
+ *         description: Required field missing or invalid data provided
+ *       404:
+ *         description: Book not found
+ *       500:
+ *         description: Server error
+ */
 router.put('/books/:id', updateBookHandler);
 
-/** * @openapi
+/** 
+ * @openapi
  * /books:
  *   post:
  *     tags: [Books]
@@ -147,18 +152,26 @@ router.put('/books/:id', updateBookHandler);
  *             properties:
  *               id:
  *                 type: string
+ *                 example: b1      
  *               authorId:
  *                 type: string
+ *                 example: a1
  *               author:
  *                 type: string
+ *                 example: John Doe
  *               title:
  *                 type: string
+ *                 example: The Great Adventure
  *               publicationDate:
  *                 type: string
+ *                 example: "2023-01-15"
  *     responses:
  *       201:
  *         description: The newly created book object
- *         content:
+ *       400:
+ *         description: Required field missing or id already exists or Invalid authorId provided
+ *       500:
+ *         description: unable to create book.
  */
 router.post('/books', createBookHandler);
 
@@ -184,6 +197,7 @@ router.post('/books', createBookHandler);
  *         description: Server error
  */
 router.delete('/books/:id', deleteBookHandler);
+
 
 //author routes
 
