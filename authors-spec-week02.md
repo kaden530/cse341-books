@@ -1,7 +1,4 @@
-# Books API Week 02 Spec - Version 1
-
-## Feature 1: Author CRUD Operations and book References
-
+# Authors API Week 02 Spec - Version 1
 
 ## Goal
 
